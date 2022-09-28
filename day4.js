@@ -116,7 +116,7 @@ if(NaN){
 
     //Write a program which tells the number of days in a month.
 
-    if(true){
+    if(undefined){
         let theMonth=prompt("Please enter a month:").toLowerCase()
 
         switch(theMonth){

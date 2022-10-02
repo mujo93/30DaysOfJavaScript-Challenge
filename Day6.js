@@ -1,5 +1,5 @@
 import {countries} from './countries.js'
-import {webTechs} from'./web_techs.js'
+import {mernStack, webTechs} from'./web_techs.js'
 // 1-Iterate 0 to 10 using for loop, do the same using while and do while loop
 /*
 for(let i=0; i<10; i++){
@@ -271,16 +271,105 @@ for(let techs of webTechs){
     console.log(techs)
 }
 */
-
+/* 
 // 29-This is a fruit array , ['banana', 'orange', 'mango', 'lemon'] reverse the order using loop without using a reverse method.
-let fruits= ['banana', 'orange', 'mango', 'lemon'] 
-for(let i=0; i<fruits.length;i++){
-    let temp=''
-    for(let j=fruits.length; j>0; j--){
-        fruits[i]=temp;
-        fruits[i]=fruits[j]
-        fruits[j]=temp
-    }
-}
-console.log(fruits)
+ let fruits= ['banana', 'orange', 'mango', 'lemon'] 
+ let reversedFruits=[]
+ for(let i=fruits.length-1; i>=0;i--)
+ {
+   let poppedElement= fruits.pop()
+   reversedFruits.push(poppedElement) 
+ }
+ console.log(reversedFruits)
 
+
+// 30- Print all the elements of array as shown below.
+ const fullStack = [
+    ['HTML', 'CSS', 'JS', 'React'],
+    ['Node', 'Express', 'MongoDB']
+  ]
+
+  for(let i=0 ;i<fullStack.length;i++){
+    for(let element of fullStack[i]){
+        console.log(element)
+    }
+  }
+
+  //31- Copy countries array(Avoid mutation)
+    let copiedCountries=[]
+   for(let i =0; i<countries.length; i++){
+        copiedCountries[i]=countries[i]
+   }
+   console.log(copiedCountries)
+*/
+   //32 -Arrays are mutable. Create a copy of array which does not modify the original.
+                                    //Sort the copied array and store in a variable sortedCountries
+
+    // let copiedCountries=[]
+    // for(let i =0; i<countries.length; i++)
+    // {
+    //     copiedCountries[i]=countries[i]
+    // }
+    // let sortedCountries=copiedCountries.sort()
+    // console.log(sortedCountries)
+
+    //33-Sort the webTechs array and mernStack array
+    //console.log(mernStack.sort())
+    //console.log(webTechs.sort())
+    /* 
+    //34 -Extract all the countries contain the word 'land' from the countries array and print it as array
+    console.log(countries)
+    for(let i =0 ; i<countries.length; i++){
+
+        countries[i].includes('land') ? countries.splice(i,1):'' 
+    }
+
+    console.log(countries)
+                              
+    // 35-Find the country containing the hightest number of characters in the countries array
+
+    let longestCountryNames=[]
+    let currentLength=0
+    for(let country of countries){
+        if(country.length>currentLength){
+            longestCountryNames=[]
+            longestCountryNames.push(country)
+            currentLength=country.length
+        }
+        else if(country.length==currentLength){
+            longestCountryNames.push(country)
+        }
+    }
+    console.log(longestCountryNames)
+*/
+/*
+    // 36- Extract all the countries contain the word 'land' from the countries array and print it as array
+
+    let countryNamesIncludeLand=[]
+    for(let country of countries){
+
+        if(country.includes('land'))
+        {
+            countryNamesIncludeLand.push(...countries.splice(countries.indexOf(country),1))
+        } 
+    }
+
+    console.log(countryNamesIncludeLand)
+    console.log(countries)
+    */
+
+    // 37- Extract all the countries containing only seven characters from the countries array 
+    //and print it as array
+    let countryNamesWithFourCharacters=[]
+    for(let country of countries){
+        if(country.length==7)
+            countryNamesWithFourCharacters.push(...countries.splice(countries.indexOf(country),1))
+
+    }
+    console.log(countries)
+    console.log(countryNamesWithFourCharacters)
+    
+    //38- Extract all the countries containing two or more words from the countries
+                                                     // array and print it as array
+
+                                                         

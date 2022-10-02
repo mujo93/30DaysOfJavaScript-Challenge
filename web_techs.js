@@ -7,3 +7,5 @@ export const webTechs = [
     'Node',
     'MongoDB'
   ]
+
+  export const mernStack = ['MongoDB', 'Express', 'React', 'Node']

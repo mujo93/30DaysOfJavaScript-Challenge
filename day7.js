@@ -1,3 +1,5 @@
+import {countries} from './countries.js'
+import {webTechs} from './web_techs.js'
 /*
 //Exercises: Level 1
 // 1-Declare a function fullName and it print out your full name.
@@ -166,7 +168,7 @@ function checkSeason(month){
 
 console.log(checkSeason('January'))
  */
-
+/* 
 // 15- Math.max returns its largest argument. 
         //Write a function findMax that takes three arguments and returns 
                 //  their maximum with out using Math.max method.
@@ -180,3 +182,259 @@ function findMax(a,b,c){
     return maxNumber
 }
 console.log(findMax(-12,-5,-3))
+
+
+
+// EXERCISE 2
+// 1- Linear equation is calculated as follows: ax + by + c = 0. 
+//Write a function which calculates value of a linear equation, solveLinEquation.
+	function solveInEquation(a, b, n)
+	{
+		// traverse for all possible values
+		for (let i = 0; i * a <= n; i++)
+		{
+			// check if it is satisfying the equation
+			if ((n - (i * a)) % b == 0)
+			{
+				console.log("x = " + i +
+								", y = " +
+								(n - (i * a)) / b);
+				return ;
+			}
+		}
+		console.log("No solution");
+	}
+		let a = 2, b = 3, n = 7;
+		solveInEquation(a, b, n);
+		
+
+// 2- Quadratic equation is calculated as follows: ax2 + bx + c = 0. 
+//Write a function which calculates value or values of a quadratic equation, solveQuadEquation.
+
+function solveQuadratic(a,b,c){
+    let root1, root2;
+    // calculate discriminant
+    let discriminant = b * b - 4 * a * c;
+    // condition for real and different roots
+    if (discriminant > 0) {
+        root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+        root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+        // result
+        return `{${root1},${root2}}`;
+    }
+    // condition for real and equal roots
+    else if (discriminant == 0) {
+        root1 = root2 = -b / (2 * a);
+        // result
+     return `{${root1}}`;
+    }
+    // if roots are not real
+    else {
+        let realPart = (-b / (2 * a)).toFixed(2);
+        let imagPart = (Math.sqrt(-discriminant) / (2 * a)).toFixed(2);
+        // result
+       return `The roots of quadratic equation are ${realPart} + ${imagPart}i and ${realPart} - ${imagPart}i`
+    }
+}
+
+console.log(solveQuadratic(1, -1, -2))
+
+
+// 3- Declare a function name printArray. 
+//  It takes array as a parameter and it prints out each value of the array.
+function printArray(arr){
+    for(let element of arr){
+        console.log(element)}
+}
+printArray(countries)
+
+// 4- Write a function name showDateTime which 
+//shows time in this format: 08/01/2020 04:08 using the Date object.
+
+function showDateTime(){
+    let now=new Date()
+    return now.toLocaleDateString()+" " + now.toLocaleTimeString().substring(0,5)
+    // return `${now.getDate()}/${now.getMonth()}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()}`
+}
+
+console.log(showDateTime())
+
+// 5- Declare a function name swapValues. This function swaps value of x to y.
+
+
+function swapValues(x,y){
+
+    let temp = x
+    x=y
+    y=temp
+
+    return `{x: ${x} y: ${y}}`
+}
+
+console.log(swapValues(4,5))
+
+// 6-Declare a function name reverseArray. 
+//It takes array as a parameter and it returns the reverse of the array (don't use method).
+
+function reverseArray(arr){
+    let reversed_array=[]
+	for (let i =arr.length - 1; i >= 0; i--) {
+		reversed_array.push(arr[i]);
+	}
+	return reversed_array
+}
+
+console.log(reverseArray([1,2,3,4,5]))
+
+*/
+// 7- Declare a function name capitalizeArray. It takes array as a parameter and it returns the - capitalizedarray.
+function capitalizedArray(arr){
+let capitalizedArray=[]
+    for(let element of arr){
+        capitalizedArray.push(element.toUpperCase())
+    }
+
+    return capitalizedArray
+}
+
+console.log(capitalizedArray(['Selami, Kemal', 'Cuneyd', 'Haktan']))
+
+// 8- Declare a function name addItem. It takes an item parameter and it returns an array after adding the item
+
+function addItem(item, arr){
+
+    arr.push(item)
+
+    return arr
+}
+
+console.log(addItem('Cemal', ['Curcan', 'Kerem', 'Turcan', 'Merih']))
+
+// 9-Declare a function name removeItem. It takes an index parameter and it returns an array after removing an item
+
+function removeItem(index, arr){
+    arr.splice(index, 1)
+    return arr
+}
+
+console.log(removeItem(2, ['Talat' ,'Kamuran', 'Cemil', 'Cevher','Tolga']))
+
+// 10- Declare a function name sumOfNumbers. It takes a number parameter and it adds all the numbers in that range.
+
+function sumOfNumbers(number){
+    let total=0
+    for(let i=number; i>=0; i--){
+        total+=i
+    }
+    return total
+}
+console.log(sumOfNumbers(11))
+
+// 11- Declare a function name sumOfOdds. It takes a number parameter and it adds all the odd numbers in that - range.
+
+function sumOfOddNumbers(number){
+    let total=0
+    for(let i=number; i>=0; i--){
+        i%2==1 ? total+=i:''}
+   
+    return total
+}
+console.log(sumOfOddNumbers(2))
+
+// 12- Declare a function name sumOfEven. It takes a number parameter and it adds all the even numbers in that - range
+
+function sumOfEvenNumbers(number){
+    let total=0
+    for(let i=number; i>=0; i--){
+        i%2==0 ? total+=i:''}
+   
+    return total
+}
+console.log(sumOfEvenNumbers(10))
+
+// 13- Declare a function name evensAndOdds . It takes a positive integer as parameter and it counts number of evens and odds in the number.
+
+function evensAndOdds(number){
+    
+    let totalOfEvenNumbers=0
+    let totalOfOddNumbers=0
+
+    if(number>0){
+        for(let i=number; i>=0; i--){
+            i%2==0 ? totalOfEvenNumbers+=i:
+                            totalOfOddNumbers+=i }
+    return `The number of odds are ${totalOfOddNumbers}\nThe number of evens are ${totalOfEvenNumbers}.`
+    }
+    else{
+        return 'Please enter a positive number!'
+    }
+}
+console.log(evensAndOdds(45))
+
+// 14- Write a function which takes any number of arguments and return the sum of the arguments
+
+function sum(){
+    let total=0
+    for(let i of arguments){
+        total+=i
+    }
+
+    return total
+}
+
+console.log(sum(10,20,30))
+
+// 15- Write a function which generates a randomUserIp.
+// 169.12.163.241
+
+function generateRandomUserIp(){
+
+    let randomUserIp= `${Math.floor(Math.random()*(999 - 100) + 100)}.${Math.floor(Math.random()*(99-10 )+10)}.${Math.floor(Math.random()*(999 - 100) + 100)}.${Math.floor(Math.random()*(999 - 100) + 100)}`
+
+    return randomUserIp
+}
+
+console.log(generateRandomUserIp())
+
+// 16- Write a function which generates a randomMacAddress
+// 36-1F-05-08-C2-D7
+function generateRandomMACAddress(){
+    let MACStringCharacters='0123456789ABCDEF'
+    let generatedRandomMACAdress=''
+    for(let i=0; i<3; i++){
+        for(let j=0; j<2 ;j++){
+            generatedRandomMACAdress+=`${MACStringCharacters[Math.floor(Math.random() * 16)]}${MACStringCharacters[Math.floor(Math.random() * 16)]}:`
+        }
+    }
+    return generatedRandomMACAdress.substring(0,generatedRandomMACAdress.length-1)
+}
+console.log(generateRandomMACAddress())
+
+// 17- Declare a function name randomHexaNumberGenerator. 
+//When this function is called it generates a random hexadecimal number. 
+//The function return the hexadecimal number.
+
+function randomHexaNumberGenerator(){
+    const random_hex_color_code = () => {
+        let n = (Math.random() * 0xfffff * 1000000).toString(16);
+        return '#' + n.slice(0, 6);
+      };
+      
+      return random_hex_color_code()
+      
+}
+
+console.log(randomHexaNumberGenerator())
+
+//18-Declare a function name userIdGenerator. 
+//When this function is called it generates seven character id. The function return the id.
+
+function userIdGenerator(IDSize){
+    let characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    let randomUserID=''
+    for(let i=0 ; i<IDSize; i++){
+        randomUserID+=characters[Math.floor(Math.random()*61)]
+    }
+    return randomUserID
+}
+console.log(userIdGenerator(7))

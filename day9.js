@@ -305,11 +305,9 @@ const statistics={
         let median=0
          const sortedArr=[...this.ages].sort((a,b)=>a-b)
         if(this.count()%2==0){
-            console.log('median: '+sortedArr[this.count()/2])
             median=(sortedArr[this.count()/2 - 1]+ sortedArr[this.count()/2])/2
         }
         else{
-            console.log('median: '+sortedArr[this.count()/2])
             median=sortedArr[Math.floor(this.count()/2)]
         }
         return median
@@ -353,7 +351,7 @@ const statistics={
     },
 
     std:function(){
-        return Math.sqrt(this.variance())
+        return Math.sqrt(this.var())
     },
 
     freqDist:function(){ 
@@ -366,6 +364,20 @@ const statistics={
 
 
         },[]).map((element) => {return {age:element[0],repetition:element.length }})
+    },
+
+    describe:function(){
+        return `Count:${this.count()}
+         Sum:${this.sum()} 
+         Min: ${this.min()}
+         Max: ${this.max()}
+         Range: ${this.range()}
+         Mean: ${this.mean()} 
+         Median:${this.median()} 
+         Mode: ${this.mode()} 
+         Variance: ${this.var()} 
+         Standard Deviation:${this.std()}
+         Frequency Distribution:${this.freqDist()} `
     }
 
 }
@@ -380,4 +392,5 @@ const statistics={
 //console.log(statistics.mode())
 //console.log(statistics.var())
 //console.log((statistics.std()))
-console.log(statistics.freqDist())
+//console.log(statistics.freqDist())
+console.log(statistics.describe())

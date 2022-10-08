@@ -1,7 +1,7 @@
 // Exercises: Level 1
 
-import {countries} from './countries.js'
-import {countriesData} from './countries_data.js'
+import {countries} from './data/countries.js'
+import {countriesData} from './data/countries_data.js'
 
     // 1-
     //ForEach: for iterating an array elements we use forEach loop. it calls a function for each element 
@@ -161,11 +161,11 @@ import {countriesData} from './countries_data.js'
 // 2- Find the sum of price of products using only reduce reduce(callback))
 
     const totalPriceOfProfindTotalPriceOfProductsUsingOnlyReduceducts=products.reduce((total,product)=>{
-        console.log(`Total:${total}`)
-        console.log(`Item:${product.price}`)
+        //console.log(`Total:${total}`)
+        //console.log(`Item:${product.price}`)
         return total+product.price},0)
 
-    console.log(totalPriceOfProfindTotalPriceOfProductsUsingOnlyReduceducts)
+    //console.log(totalPriceOfProfindTotalPriceOfProductsUsingOnlyReduceducts)
 
 // 3- Declare a function called categorizeCountries which returns an array of 
         //countries which have some common pattern(you find the countries array in this 
@@ -177,7 +177,7 @@ import {countriesData} from './countries_data.js'
 
     }
 
-    console.log(categorizeCountries('Tur',countriesData))
+    //console.log(categorizeCountries('Tur',countriesData))
 
 // 4- Create a function which return an array of objects, which is the letter and the number of times the letter 
 //    use to start with a name of a country.
@@ -188,7 +188,7 @@ function findNumberOfCountriesStartSameInitial(initial,arr){
 
 }
 
-console.log(findNumberOfCountriesStartSameInitial('T',countriesData))
+//console.log(findNumberOfCountriesStartSameInitial('T',countriesData))
 
 // 5- Declare a getFirstTenCountries function and return an array of ten countries. 
 //              Use different functional programming to work on the countries.js array
@@ -197,7 +197,7 @@ function getFirstTenCountries(arr){
    return arr.filter((country,index)=> index<16) 
 }
 
-console.log(getFirstTenCountries(countriesData))
+///console.log(getFirstTenCountries(countriesData))
 
 // 6- Declare a getLastTenCountries function which returns the last ten countries in the countries array.
 
@@ -205,7 +205,7 @@ function getLastTenCountries(arr){
     return arr.filter((country,index,array)=> index>array.length-11) 
 }
 
-console.log(getLastTenCountries(countriesData))
+//console.log(getLastTenCountries(countriesData))
 
 // 7- Find out which letter is used many times as initial for a country name from the 
 //    countries array (eg. Finland, Fiji, France etc)
@@ -221,8 +221,163 @@ function NumberOfTimesTheInitialUsed(arr){
     },{})
 }
 
-console.log(Object.entries((NumberOfTimesTheInitialUsed)(countriesData)).map(array => {
+//console.log(Object.entries((NumberOfTimesTheInitialUsed)(countriesData)).map(array => {
 
-    return {initial:array[0][0],numberOfTimesCountriesStartWith:array[1].length}
+ //   return {initial:array[0][0],numberOfTimesCountriesStartWith:array[1].length}
 
-    }))
+ //   }))
+
+
+// Exercises: Level 3
+
+// 1- Use the countries information, in the data folder. Sort countries by name, by capital, by population
+
+//By name
+//console.log(countriesData.sort((a,b)=>{return a.name>b.name ? 1: -1}))
+
+//By capital
+//console.log(countriesData.sort((a,b)=> { return a.capital > b.capital ? -1 : 1}))
+
+//By population
+//console.log(countriesData.sort((a,b)=>{return a.population-b.population}))
+
+// 2- *** Find the 10 most spoken languages:
+
+function mostSpokenLanguages(countries,numberOfCountries){
+
+       let mostSpokenLanguages= countries.reduce((groupedCountries,country)=>{
+        const languages=country.languages
+        for(const language of languages){
+        if(groupedCountries[language]==null) groupedCountries[language]=[]
+        groupedCountries[language].push(country)
+        console.log(groupedCountries)
+        }},{})
+
+        return mostSpokenLanguages
+}
+
+//console.log(mostSpokenLanguages(countriesData,10))
+
+let array=[]
+
+// 3- *** Use countries_data.js file create a function which create the ten most populated countries
+
+function mostPopulatedCountries(countries,numberOfCountry){
+
+    //1- sort countries by desc order
+    const sortedCountriesByPopulationDesc=countriesData.sort((a,b)=>{return b.population-a.population})
+
+    //2- compose a new array based on the form given in the example array of objects {country, population}
+    const mostPopulatedCountries= sortedCountriesByPopulationDesc.map((country)=>{
+        
+        return {country:country.name,population:country.population}})
+
+    // I did not use filter method to pick 10 most populated country since the filter method goes through all items in the array
+    // instead I defined a new array and pushed data into the array using for loop.Thus it will be only looped through first 10 element/
+    const mostPopulatedNumberOfCountries=[]
+    
+    for(let i=0 ;i<numberOfCountry;i++){
+        mostPopulatedNumberOfCountries.push(mostPopulatedCountries[i])
+    }
+
+    return mostPopulatedNumberOfCountries
+}
+
+//console.log(mostPopulatedCountries(countriesData,3))
+
+/*
+*** Try to develop a program which calculate measure of central tendency of a sample(mean, median, mode) 
+and measure of variability(range, variance, standard deviation). In addition to those measures 
+find the min, max, count, percentile, and frequency distribution of the sample. You can create an 
+object called statistics and create all the functions which do statistical calculations as method 
+for the statistics object. Check the output below.
+*/
+
+const statistics={
+    ages:[31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24, 32, 33, 27, 25, 26, 38, 37, 31, 34, 24, 33, 29, 26],
+    count:function(){return this.ages.length},
+    sum:function(){return this.ages.reduce((total,curNum)=>{return total+=curNum},0)},
+    min:function(){return this.ages.reduce((a, b) => Math.min(a, b))},
+    max:function(){return this.ages.reduce((a, b) => Math.max(a, b))},
+    range:function(){return this.max()-this.min()} ,
+    mean:function(){return this.sum()/this.count()},
+    median:function(){ 
+        let median=0
+         const sortedArr=[...this.ages].sort((a,b)=>a-b)
+        if(this.count()%2==0){
+            console.log('median: '+sortedArr[this.count()/2])
+            median=(sortedArr[this.count()/2 - 1]+ sortedArr[this.count()/2])/2
+        }
+        else{
+            console.log('median: '+sortedArr[this.count()/2])
+            median=sortedArr[Math.floor(this.count()/2)]
+        }
+        return median
+    },
+
+    mode:function () {
+            const sortedArr=[...this.ages].sort((a,b)=>a-b)
+            let max_count = 1, res = sortedArr[0];
+            let curr_count = 1;
+           
+        for (let i = 1; i < this.ages.length; i++)
+        {
+            if (sortedArr[i] == sortedArr[i - 1])
+                curr_count++;
+            else
+                curr_count = 1;
+            
+            if (curr_count > max_count)
+            {
+                max_count = curr_count;
+                res = sortedArr[i - 1];
+            }
+ 
+        }
+        return res;
+    },
+
+             
+
+    var:function(){
+
+        //1 -mutate the array of ages by the formula (value – mean) ^ 2
+        const meanVal=this.mean()
+        const mutatedArray=this.ages.map(age => (age-meanVal)*(age-meanVal) )
+        //2 -then calculate the sum of the mutated array
+        const sumOfMutatedArray= mutatedArray.reduce((total,curVal)=>total+curVal,0)
+        //3 -then divide the sum with the length of the array and return it
+
+        return sumOfMutatedArray/mutatedArray.length
+        
+    },
+
+    std:function(){
+        return Math.sqrt(this.variance())
+    },
+
+    freqDist:function(){ 
+      return this.ages.reduce((groupedAges,age)=>{
+            const personAge=age
+            if(groupedAges[personAge]==null) groupedAges[personAge]=[]
+            groupedAges[personAge].push(age)
+        
+           return groupedAges
+
+
+        },[]).map((element) => {return {age:element[0],repetition:element.length }})
+    }
+
+}
+
+//console.log(statistics.count())
+//console.log(statistics.sum())
+//console.log(statistics.min())
+//console.log(statistics.max())
+//console.log(statistics.range())
+//console.log(statistics.mean())
+//console.log(statistics.median())
+//console.log(statistics.mode())
+//console.log(statistics.var())
+//console.log((statistics.std()))
+console.log(statistics.freqDist())

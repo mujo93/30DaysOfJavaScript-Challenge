@@ -1,4 +1,4 @@
-import {countries} from './countries_data.js'
+import {countries} from './data/countries_data.js'
 /*
 //Exercises: Level 1
 // 1-Create an empty object called dog
